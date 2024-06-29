@@ -19,14 +19,13 @@ export async function getQuestions(params: GetQuestionsParams) {
     connectToDatabase();
     const { searchQuery, filter, page = 1, pageSize = 10 } = params;
     // Calculcate the number of posts to skip based on the page number and page size
-    
-    
-    const questions = await Question.find()
+     
+    const questions = await Question.find({})
       .populate({ path: "tags", model: Tag })
       .populate({ path: "author", model: User })
 
     
-    return questions;
+    return {questions};
   } catch (error) {
     console.error(error);
     throw error;
