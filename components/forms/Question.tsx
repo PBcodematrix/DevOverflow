@@ -66,7 +66,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     }
   }
 
-  const handleInputKeyDown =(e,field:any) => {
+  const handleInputKeyDown =(e:any,field:any) => {
     if (e.key === "Enter" && field.name === "tags") {
         console.log(field);
       e.preventDefault();
@@ -91,7 +91,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     }
   }
 
-  const handleTagRemove = useCallback((tag,field) => {
+  const handleTagRemove = useCallback((tag:string,field:any) => {
     //   if (type === "Edit") {
     //     return;
     //   }

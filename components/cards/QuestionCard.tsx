@@ -6,7 +6,17 @@ import Link from 'next/link'
 import RenderTag from '../shared/RenderTag'
 
 
-
+interface Props{
+  _id:any;
+  title:any;
+  tags:any;
+  author:any;
+  upvotes:number;
+  downvotes:number;
+  views:number;
+  answers:number;
+  createdAt:Date;
+}
 
 const QuestionCard = ({
   _id,
@@ -18,7 +28,7 @@ const QuestionCard = ({
   views,
   answers,
   createdAt,
-}) => {
+}:Props) => {
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
     <div className="flex flex-col-reverse items-center justify-between gap-5 sm:flex-row">
@@ -39,7 +49,7 @@ const QuestionCard = ({
       </SignedIn> */}
     </div>
     <div className="mt-3.5 flex flex-wrap gap-2">
-      {tags.map((tag) => (
+      {tags.map((tag:any) => (
         <RenderTag key={tag._id} _id={tag._id} name={tag.name} />
       ))}
     </div>
