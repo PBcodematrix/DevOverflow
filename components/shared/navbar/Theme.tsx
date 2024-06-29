@@ -7,13 +7,10 @@ import {
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import Image from "next/image";
 import { themes } from "@/constants";
-import { text } from "stream/consumers";
 
 const Theme = () => {
   const { mode, setMode } = useTheme();

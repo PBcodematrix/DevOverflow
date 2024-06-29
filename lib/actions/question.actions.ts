@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use server";
 import Question from "@/database/question.model";
 import Tag from "@/database/tag.model";
