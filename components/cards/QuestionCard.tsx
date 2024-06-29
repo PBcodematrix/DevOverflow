@@ -5,6 +5,9 @@ import { getTimestamp,formatAndDivideNumber } from '@/lib/utils'
 import Link from 'next/link'
 import RenderTag from '../shared/RenderTag'
 
+
+
+
 const QuestionCard = ({
   _id,
   title,
