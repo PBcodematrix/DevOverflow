@@ -29,7 +29,7 @@ interface Props {
   questionDetails?: string;
 }
 const Question = ({ type, mongoUserId, questionDetails }: Props) => {
-  console.log(mongoUserId);
+  // console.log(mongoUserId);
   const router=useRouter();
   const pathname=usePathname();
   const editorRef = useRef(null);

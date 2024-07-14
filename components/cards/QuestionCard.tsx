@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import Metric from '../shared/Metric'
 import { getTimestamp,formatAndDivideNumber } from '@/lib/utils'
@@ -6,16 +5,23 @@ import Link from 'next/link'
 import RenderTag from '../shared/RenderTag'
 
 
-interface Props{
-  _id:any;
-  title:any;
-  tags:any;
-  author:any;
-  upvotes:number;
-  downvotes:number;
-  views:number;
-  answers:number;
-  createdAt:Date;
+import { IQuestion } from "@/database/question.model";
+import { ITag } from "@/database/tag.model";
+import { IUser } from "@/database/user.model";
+import { IAnswer } from "@/database/answer.model";
+
+
+interface QuestionProps {
+  _id: IQuestion["_id"];
+  title: IQuestion["title"];
+  tags: ITag[];
+  author: IUser;
+  upvotes: IUser[];
+  downvotes: IUser[];
+  views: IQuestion["views"];
+  answers: IAnswer[];
+  createdAt: IQuestion["createdAt"];
+  clerkId?: string | null;
 }
 
 const QuestionCard = ({
@@ -28,7 +34,7 @@ const QuestionCard = ({
   views,
   answers,
   createdAt,
-}:Props) => {
+}:QuestionProps) => {
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
     <div className="flex flex-col-reverse items-center justify-between gap-5 sm:flex-row">
@@ -69,21 +75,21 @@ const QuestionCard = ({
         <Metric
           imgUrl="/assets/icons/upvote.svg"
           alt="Upvotes"
-          value={formatAndDivideNumber(upvotes)}
+          value={formatAndDivideNumber(upvotes.length)}
           title=" Votes"
           textStyles="small-medium text-dark400_light800"
         />
         <Metric
           imgUrl="/assets/icons/downvote.svg"
           alt="Downvotes"
-          value={formatAndDivideNumber(downvotes)}
+          value={formatAndDivideNumber(downvotes.length)}
           title=" Votes"
           textStyles="small-medium text-dark400_light800"
         />
         <Metric
           imgUrl="/assets/icons/message.svg"
           alt="Message"
-          value={formatAndDivideNumber(answers)}
+          value={formatAndDivideNumber(answers.length)}
           title=" Answers"
           textStyles="small-medium text-dark400_light800"
         />

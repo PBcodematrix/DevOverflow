@@ -1,23 +1,10 @@
-"use client"
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import RenderTag from './RenderTag'
+import { getHotQuestions } from '@/lib/actions/question.actions'
 
-const hotQuestions=[
-    {
-        _id:1,title:'How do I use express as a server ?'
-    },
-    {
-        _id:2,title:'How do I use express as a server ?'
-    },
-    {
-        _id:3,title:'How do I use express as a server ?'
-    },
-    {
-        _id:4,title:'How do I use express as a server ?'
-    },
-]
+
 
 const popularTags=[
     {_id:1,name:'javascript',totalQuestions:5},
@@ -27,7 +14,8 @@ const popularTags=[
 
 ]
 
-const RightSidebar = () => {
+const RightSidebar = async() => {
+    const hotQuestions=await getHotQuestions();
   return (
     <section className="background-light900_dark200 light-border sticky right-0 top-0 flex h-screen flex-col  overflow-y-auto border-l p-6 pt-36 shadow-light-300 dark:shadow-none max-xl:hidden lg:w-[350px]">
         <div>
@@ -38,7 +26,7 @@ const RightSidebar = () => {
                 return(
                     <Link 
                     key={question._id}
-                    href={`/questions/${question._id}`}
+                    href={`/question/${question._id}`}
                     className='flex cursor-pointer items-center justify-between gap-7'
                     >
                     <p className='body-medium text-dark500_light700'>
