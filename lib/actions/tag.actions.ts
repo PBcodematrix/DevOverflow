@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-vars */
 "use server";
 
 import Question from "@/database/question.model";
 import { connectToDatabase } from "../mongoose";
 import {
   GetAllTagsParams,
+  GetQuestionsByTagIdParams,
 
 } from "./shared.types";
 import Tag from "@/database/tag.model";
+import User from "@/database/user.model";
 
 
 export async function getAllTags(params: GetAllTagsParams) {
